@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "saladejuegos-gonzalo-sinnott"
+  },
+  "targets": {
+    "saladejuegos-gonzalo-sinnott": {
+      "hosting": {
+        "salaDeJuegos": [
+          "saladejuegos-gonzalo-sinnott"
+        ]
+      }
+    }
   }
 }

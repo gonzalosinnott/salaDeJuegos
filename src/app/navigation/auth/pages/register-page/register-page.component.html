@@ -1,0 +1,16 @@
+<div class="background">
+    <div class="login-container">
+        <div class="form-container">
+            <h1>Registro de Usuario</h1>
+            <app-login-form (formData)="register($event)"></app-login-form>
+        </div>
+        <div class="text-container">
+            <h1>Hey Buddy</h1>
+            <p>
+                Already have an awesome account? Go ahead and click the button below to
+                sign in!
+            </p>
+            <button mat-button routerLink="/">Sign in</button>
+        </div>
+    </div>
+</div>

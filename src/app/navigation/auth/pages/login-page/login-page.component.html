@@ -1,16 +1,19 @@
 <div class="background">
     <div class="login-container">
         <div class="text-container">
-            <h1>Hey Stranger</h1>
+            <h1>¡Hola!</h1>
             <p>
-                Want to create an awesome account to access this awesome app? Go ahead
-                and click the button below!
+                Si aun no tienes cuenta, puedes registrarte haciendo click en el boton de abajo.
             </p>
-            <button mat-button routerLink="/register">Sign up</button>
+            <button mat-button routerLink="/register">Registrarse</button>
         </div>
         <div class="form-container">
-            <h1>Inicio de Sesion</h1>
-            <h5>Sign in with your email</h5>
+            <h1>Inicio de Sesión</h1>
+            <button class="mat-raised-button" (click)="loginWithGoogle()">
+                INICIAR SESIÓN CON GOOGLE
+            </button>
+            <br>
+            <br>
             <app-login-form (formData)="login($event)"></app-login-form>
         </div>
     </div>

@@ -1,12 +1,17 @@
+import {   canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgModule } from '@angular/core';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
       import('./navigation/auth/auth.module').then((m) => m.AuthModule),
+      ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'dashboard',
@@ -14,6 +19,7 @@ const routes: Routes = [
       import('./navigation/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
+      ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: '**',

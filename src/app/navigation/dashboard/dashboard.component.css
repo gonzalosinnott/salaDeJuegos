@@ -23,7 +23,7 @@ a:hover {
 .background {
     align-items: center;
     background-image: url("/assets/background.jpg");
-    background-size: cover;
+    background-size: contain;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ a:hover {
 }
 
 .btn {
-    background-color: #5eccd6;
+    background-color: #00647e;
     border-radius: 20px;
     color: #fff;
     padding: 10px 30px;

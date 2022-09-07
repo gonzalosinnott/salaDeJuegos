@@ -1,24 +1,26 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-control">
-      <mat-label>Email</mat-label>
+      <mat-label>Correo electronico</mat-label>
       <input matInput formControlName="email" type="text" required />
       <mat-error *ngIf="email?.hasError('required')">
-        Email is required
+        El correo electronico es obligatorio
       </mat-error>
       <mat-error *ngIf="email?.hasError('email')">
-        Email isn't valid. Please enter a valid email.
+        El correo electrónico no es válido. Por favor introduzca una dirección de correo electrónico válida.
       </mat-error>
     </mat-form-field>
+    <br>
     <mat-form-field class="form-control">
-      <mat-label>Password</mat-label>
-      <input matInput formControlName="password" type="password" required />
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password"  required />
       <mat-error *ngIf="password?.hasError('required')">
-        Password is required
+        La contraseña es obligatoria.
       </mat-error>
     </mat-form-field>
+    <br>
     <div class="form-footer">
       <button [disabled]="form.invalid" mat-raised-button type="submit">
-        Submit
+        Enviar
       </button>
     </div>
   </form>

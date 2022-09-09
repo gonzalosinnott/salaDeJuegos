@@ -9,11 +9,13 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CvPageComponent } from './navigation/cv-page/cv-page.component';
+import { NotFoundComponent } from './navigation/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CvPageComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

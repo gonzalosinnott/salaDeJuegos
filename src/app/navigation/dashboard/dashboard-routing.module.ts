@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { Juego1PageComponent } from './juego1-page/juego1-page.component';
 import { CvPageComponent } from '../cv-page/cv-page.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   { path: '',component: DashboardComponent,children: [
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: 'juego1' , pathMatch: 'full',component: Juego1PageComponent },
   ] },
   { path: 'cv',component: CvPageComponent },
+  { path: '**', pathMatch: 'full', component: NotFoundComponent }
 
 ];
 

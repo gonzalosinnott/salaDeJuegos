@@ -1,7 +1,20 @@
 <div class="card mb-3 border border-light">
-    <img class="card-img-top" src="assets/cardheader.jpg" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">SALA DE JUEGOS</h5>
-        <p class="card-text">Dashboard Sala de Juegos</p>
+  <img class="card-img-top" src="assets/cardheader.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">SALA DE JUEGOS</h5>
+    <p class="card-text">Dashboard Sala de Juegos</p>
+    <!-- Show user data when logged in -->
+    <div class="row" *ngIf="authService.userData as user">
+      <div class="col-md-12">
+        <div class="media d-flex p-2 bd-highlight align-items-center">
+          <img class="img-thumbnail img-fluid rounded-circle image"
+            src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+          <div class="info">
+            <p>Usuario: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p>
+            <p>Email: <strong>{{user.email}}</strong></p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

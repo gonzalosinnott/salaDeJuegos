@@ -34,4 +34,9 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     this.formData.emit(this.form.value);
   }
+
+  fillForm() {
+    this.form.get('email').setValue('test@test.com');
+    this.form.get('password').setValue('123456');
+  }
 }

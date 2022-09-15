@@ -5,6 +5,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LoginData } from 'src/app/interfaces/login-data.interface';
 import { Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -13,7 +16,8 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   constructor(
     private readonly authService: AuthService,
-    private readonly router: Router
+    private readonly router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -22,13 +26,13 @@ export class LoginPageComponent implements OnInit {
     this.authService
       .login(loginData)
       .then(() => this.router.navigate(['/dashboard']))
-      .catch((e) => alert(e.message));
+      .catch((e) => this.toastr.error(e.message));
   }
 
   loginWithGoogle() {
     this.authService
       .loginWithGoogle()
       .then(() => this.router.navigate(['/dashboard']))
-      .catch((e) => console.log(e.message));
+      .catch((e) => this.toastr.error(e.message));
   }
 }

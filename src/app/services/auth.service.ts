@@ -6,7 +6,9 @@ import {
   signInWithPopup,
   signOut,
 } from '@angular/fire/auth';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 import {
   AngularFirestore,
   AngularFirestoreDocument,
@@ -14,10 +16,11 @@ import {
 
 import { User } from '../services/user';
 
+import { getDatabase, ref, set } from "firebase/database";
+
 import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data.interface';
 
-import { getDatabase, ref, set } from "firebase/database";
 
 @Injectable({
   providedIn: 'root',
@@ -101,5 +104,9 @@ export class AuthService {
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  getAuth() {
+    return this.afAuth.authState;
   }
 }

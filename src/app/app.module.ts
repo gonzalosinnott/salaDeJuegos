@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
@@ -12,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CvPageComponent } from './navigation/cv-page/cv-page.component';
 import { NotFoundComponent } from './navigation/not-found/not-found.component';
 import { AngularFireModule } from '@angular/fire/compat';
+import { NgModule } from '@angular/core';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,36 +1,26 @@
-a {
-    color: #838383;
-    margin-top: 30px;
-    text-decoration: none;
-  }
-  
+ 
   h1 {
     color: #5eccd6;
     font-weight: bolder;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
   }
-  
-  h5 {
-    color: #838383;
-  }
-  
+
   button {
     border-radius: 20px;
-    padding: 0 50px;
-  }
-  
-  p {
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 5px;
   }
   
   .background {
+    display: flex;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
     background-image: url("/assets/background.jpg");
     background-size: contain;
-    align-items: center;
-    display: flex;
-    height: 80%;
-    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 10%;
   }
   
   .login-container {
@@ -59,7 +49,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px;
+    padding: 30px;
     width: 70%;
   }
   

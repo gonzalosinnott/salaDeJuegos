@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { LoginData } from 'src/app/interfaces/login-data.interface';
 import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { RegisterData } from 'src/app/interfaces/register-data.interface';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  register(data: LoginData) {
+  register(data: RegisterData) {
     
     this.authService
       .register(data)

@@ -1,22 +1,24 @@
 <div class="background">
     <div class="login-container">
         <div class="text-container">
+            <img src='/assets/logo.png' class="img-responsive" style="width: 100%;">
             <h1>¡Hola!</h1>
             <p>
                 Si aun no tienes cuenta, puedes registrarte haciendo click en el boton de abajo.
             </p>
-            <button mat-button routerLink="/register">Registrarse</button>
+            <button style="width: 100%; color: white" routerLink="/register">Registrarse</button>
         </div>
         <div class="form-container">
-            <h1>SALA DE JUEGOS</h1>
+                <h1>SALA DE JUEGOS</h1>
+                       <br>
+            <app-login-form (formData)="login($event)"></app-login-form>
+            <br>
             <a class="btn btn-light border-dark" style="background-color: #ffffff;" role="button" (click)="loginWithGoogle()">
                 <i class="bi bi-google me-2" style="color: cornflowerblue;"></i>
                 INICIAR SESIÓN CON GOOGLE
             </a>
-            <br>
-            <br>
-            <app-login-form (formData)="login($event)"></app-login-form>
         </div>
+        
     </div>
 </div>
 

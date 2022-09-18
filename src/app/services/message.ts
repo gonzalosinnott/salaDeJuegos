@@ -4,4 +4,5 @@ export interface Message {
     date: string;
     uid: string;
     email: string;
+    photo: string;
 }

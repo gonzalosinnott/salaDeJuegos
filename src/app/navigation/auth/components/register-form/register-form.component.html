@@ -11,6 +11,14 @@
     </mat-form-field>
     <br>
     <mat-form-field class="form-control">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="user" type="text" required />
+      <mat-error *ngIf="user?.hasError('required')">
+        El Usuario es obligatorio
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form-control">
       <mat-label>Contraseña</mat-label>
       <input matInput formControlName="password" type="password"  required />
       <mat-error *ngIf="password?.hasError('required')">

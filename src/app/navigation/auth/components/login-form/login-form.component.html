@@ -18,13 +18,11 @@
       </mat-error>
     </mat-form-field>
     <br>
-      <button [disabled]="form.invalid" mat-raised-button type="submit">
-        Enviar
+      <button [disabled]="form.invalid" style="width:100%" mat-raised-button type="submit">
+        Ingresar
       </button>
-      <br>
-      <br>
-
-      <button mat-raised-button type="submit" (click)="fillForm()">
-        Ingreso Rapido
-      </button>
+      <br>      
   </form>
+  <button mat-raised-button  style="width:100%" (click)="fillForm()">
+    Ingreso Rapido
+  </button>

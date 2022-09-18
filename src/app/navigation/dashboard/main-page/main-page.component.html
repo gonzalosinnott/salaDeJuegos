@@ -1,35 +1,40 @@
 <div class="container py-1">
  
-  <div class="p-5 mb-4 bg-light rounded-3">
+  <div class="p-2 mb-2 bg-light rounded-3">
     <div class="container-fluid py-1">
       <div>
         <h2>Lorem ipsum dolor</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque laboriosam quaerat maiores dolor, facilis, nostrum pariatur obcaecati at exercitationem ut vero nesciunt. Molestias blanditiis voluptate, culpa voluptatem minima impedit deleniti.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque laboriosam quaerat maiores dolor, facilis, nostrum pariatur obcaecati at exercitationem ut vero nesciunt. Molestias blanditiis voluptate.<p>
       </div>
     </div>
   </div>
 
   <div class="row align-items-md-stretch">
 
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h1>PERFIL</h1>
+        <hr>
         <div *ngIf="authService.userData as user">
           <div class="row align-items-md-stretch">
-
               <div class="col-md-2">
             <img class="img-thumbnail img-fluid"
               src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
               </div>
             <div class="col-md-6 info">
-              <p>Usuario: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p>
+              <p>Usuario: <strong>{{(user.displayName)}}</strong></p>
               <p>Email: <strong>{{user.email}}</strong></p>
             </div>
           </div>
+          <hr>
+          <h1>PUNTUACIONES</h1>
+          <hr>
+          <P>WIP</P>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4 ">
       <div class="h-100 p-5 bg-light border rounded-3">
         <app-chat></app-chat>
       </div>

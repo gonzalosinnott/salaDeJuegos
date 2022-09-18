@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterFormComponent implements OnInit {
   @Output() formData: EventEmitter<{
     email: string;
+    user: string;
     password: string;
     password2: string;
   }> = new EventEmitter();
@@ -24,6 +25,7 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      user: ['', [Validators.required]],
       password: ['', Validators.required],
       password2: ['', Validators.required],
     });
@@ -31,6 +33,10 @@ export class RegisterFormComponent implements OnInit {
 
   get email() {
     return this.form.get('email');
+  }
+
+  get user() {
+    return this.form.get('user');
   }
 
   get password() {

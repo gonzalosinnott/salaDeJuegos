@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NavbarPageComponent } from './navbar-page/navbar-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { Juego1PageComponent } from './juego1-page/juego1-page.component';
+import { AhorcadoPageComponent } from './ahorcado-page/ahorcado-page.component';
 import { RouterModule } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
 
@@ -17,7 +17,7 @@ import { ChatComponent } from './chat/chat.component';
     NavbarPageComponent,
     FooterPageComponent,
     MainPageComponent,
-    Juego1PageComponent,
+    AhorcadoPageComponent,
     ChatComponent,
   ],
   imports: [

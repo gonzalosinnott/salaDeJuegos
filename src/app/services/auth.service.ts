@@ -20,6 +20,7 @@ import { getDatabase, ref, set } from "firebase/database";
 
 import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data.interface';
+import { RegisterData } from '../interfaces/register-data.interface';
 
 
 @Injectable({
@@ -60,10 +61,14 @@ export class AuthService {
     })
   }
 
-  register({ email, password }: LoginData) {
-    return createUserWithEmailAndPassword(this.auth, email, password)
-    .then((result) => {
-      this.SetUserData(result.user);
+  register({ email, user, password }: RegisterData) {
+    console.log(email, user, password);
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+    .then(credential => {
+      credential.user.updateProfile({
+        displayName: user,
+     })
+      this.SetUserData(credential.user);
     })
   }
 

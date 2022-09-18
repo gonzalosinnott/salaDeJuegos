@@ -19,6 +19,7 @@ export class ChatService {
         this.userLog.name = user.displayName;
         this.userLog.uid = user.uid;
         this.userLog.email = user.email;
+        this.userLog.photoURL = user.photoURL;
       }
 
     });
@@ -46,20 +47,14 @@ export class ChatService {
       message: message,
       date: this.formatDate(new Date()),
       uid: this.userLog.uid,
-      email: this.userLog.email
+      email: this.userLog.email,
+      photo:  this.userLog.photoURL,
     };
 
     return this.itemsCollection?.add(newMessage);
   }
 
-  dateComponentPad = (value: string) => {
-    var format = value;
-    return format.length < 2 ? '0' + format : format;
-  }
-
   formatDate = (date: any) => {
-    let datePart = [date.getDate(), date.getMonth() + 1, date.getFullYear()].map(this.dateComponentPad);
-    let timePart = [date.getHours(), date.getMinutes(), date.getSeconds()].map(this.dateComponentPad);
-    return datePart.join('-') + ' ' + timePart.join(':');
+    return date.toLocaleString()
   }
 }

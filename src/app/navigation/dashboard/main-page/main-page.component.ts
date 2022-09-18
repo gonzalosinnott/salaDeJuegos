@@ -9,8 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MainPageComponent implements OnInit {
 
   constructor(public authService: AuthService) { }
+  user:any;
 
   ngOnInit(): void {
+    this.authService.getAuth().subscribe(user => {
+      if (user) {
+        this.user.name = user.displayName;
+        this.user.uid = user.uid;
+        this.user.email = user.email;
+      }
+    });
+    console.log(this.user.name);
+    console.log(this.user.uid);
+    console.log(this.user.email);
+
   }
 
 }

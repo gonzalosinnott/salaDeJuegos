@@ -35,8 +35,10 @@ export class LoginFormComponent implements OnInit {
     this.formData.emit(this.form.value);
   }
 
-  fillForm() {
-    this.form.get('email').setValue('test@test.com');
-    this.form.get('password').setValue('123456');
+  fillForm() : void {
+    this.form = this.fb.group({
+      email: ['user@test.com'],
+      password: ['123456'],
+    });
   }
 }

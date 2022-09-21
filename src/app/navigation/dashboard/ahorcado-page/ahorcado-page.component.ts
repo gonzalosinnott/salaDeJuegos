@@ -13,14 +13,27 @@ export class AhorcadoPageComponent implements OnInit {
   tries = 0;
   win = false;
   lost = false;
-  triesImg = "assets/hangman/hangman0.png"
+  triesImg = "assets/hangman/hangman0.png";
+  letterButton:boolean = false;
+
 
   constructor() { }
 
   ngOnInit(): void {
-    let randomNumber = Math.floor(Math.random() * words.length);
-    this.word = words[randomNumber];
+    this.getRandomWord();
+  }
+
+  getRandomWord() {
+    fetch('https://clientes.api.greenborn.com.ar/public-random-word')
+    .then(response => response.json())
+    .then(data => this.storeWord(data));
+  }
+
+  storeWord(data) {
+    console.log(data);
+    this.word = data.toString().toUpperCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
     this.hiddenWord = '_ '.repeat(this.word.length);
+    console.log(this.word);
   }
 
   actionMethod(event: any) {
@@ -75,11 +88,13 @@ export class AhorcadoPageComponent implements OnInit {
     const wordCheck = wordArray.join('');
 
     if (wordCheck === this.word) {
+      this.letterButton = true;
       this.win = true;
       this.triesImg = "assets/hangman/hangmanWon.png"
     }
 
     if (this.tries >= 7) {
+      this.letterButton = true;
       this.lost = true;
       this.triesImg = "assets/hangman/hangmanLose.png"
     }

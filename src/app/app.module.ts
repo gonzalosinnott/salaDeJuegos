@@ -1,6 +1,7 @@
 
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),

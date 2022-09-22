@@ -19,10 +19,6 @@ export class MainPageComponent implements OnInit {
         this.user.email = user.email;
       }
     });
-    console.log(this.user.name);
-    console.log(this.user.uid);
-    console.log(this.user.email);
-
   }
 
 }

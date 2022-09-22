@@ -35,8 +35,6 @@ export class ChatService {
       setTimeout(() => {
         this.elements = document.getElementById('app-message');
         console.log(this.elements);
-        this.elements.scrollTop = this.elements.scrollHeight;
-
       }, 20);
     });
   }

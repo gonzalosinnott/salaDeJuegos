@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AhorcadoService } from 'src/app/services/ahorcado.service';
 import { words } from './words';
 
 @Component({
@@ -15,25 +16,22 @@ export class AhorcadoPageComponent implements OnInit {
   lost = false;
   triesImg = "assets/hangman/hangman0.png";
   letterButton:boolean = false;
+  data:any;
 
 
-  constructor() { }
+  constructor( private service: AhorcadoService) { }
 
   ngOnInit(): void {
-    this.getRandomWord();
+    this.storeWord();
   }
-
-  getRandomWord() {
-    fetch('https://clientes.api.greenborn.com.ar/public-random-word')
-    .then(response => response.json())
-    .then(data => this.storeWord(data));
-  }
-
-  storeWord(data) {
-    console.log(data);
-    this.word = data.toString().toUpperCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
-    this.hiddenWord = '_ '.repeat(this.word.length);
-    console.log(this.word);
+  
+  storeWord() {
+    this.service.getRandomWord().subscribe((data) => {
+      this.data = data;
+      this.word = data.toString().toUpperCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
+      this.hiddenWord = '_ '.repeat(this.word.length);
+      console.log(this.word);
+    });    
   }
 
   actionMethod(event: any) {

@@ -10,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AhorcadoPageComponent } from './ahorcado-page/ahorcado-page.component';
 import { RouterModule } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
+import { MayorMenorPageComponent } from './mayor-menor-page/mayor-menor-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ChatComponent } from './chat/chat.component';
     MainPageComponent,
     AhorcadoPageComponent,
     ChatComponent,
+    MayorMenorPageComponent,
   ],
   imports: [
     FormsModule,

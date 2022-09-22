@@ -1,0 +1,37 @@
+<div class="container py-1">
+
+    <div class="p-2 mb-2 bg-light rounded-3">
+      <div class="container-fluid py-1">
+        <div>
+          <h2>PREGUNTADOS</h2>
+          <p>Preguntados es un juego de preguntas y respuestas de eleccion multiple. Para ganar, tendrás que contestar correctamente las preguntas que iran apareciendo en pantalla.   
+          <p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row align-items-md-stretch">
+  
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+            <p>¿QUE PERSONAJE ES?</p> 
+            <br>          
+            <img src={{characterImg}} alt="character" width="max" height="200">
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[0])">{{array[0]}}</button>
+            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[1])">{{array[1]}}</button>
+            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[2])">{{array[2]}}</button>
+            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[3])">{{array[3]}}</button>
+            <br>
+            <br>
+            <p>PUNTAJE: {{points}}</p>    
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>

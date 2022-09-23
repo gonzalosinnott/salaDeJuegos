@@ -5,6 +5,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AhorcadoPageComponent } from './ahorcado-page/ahorcado-page.component';
 import { MayorMenorPageComponent } from './mayor-menor-page/mayor-menor-page.component';
 import { PreguntadosPageComponent } from './preguntados-page/preguntados-page.component';
+import { SnakePageComponent } from './snake-page/snake-page.component';
 import { CvPageComponent } from '../cv-page/cv-page.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'ahorcado' , pathMatch: 'full',component: AhorcadoPageComponent },
     { path: 'mayormenor' , pathMatch: 'full',component: MayorMenorPageComponent },
     { path: 'preguntados' , pathMatch: 'full',component: PreguntadosPageComponent },
+    { path: 'snake' , pathMatch: 'full',component: SnakePageComponent },
   ] },
   { path: 'cv',component: CvPageComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent }

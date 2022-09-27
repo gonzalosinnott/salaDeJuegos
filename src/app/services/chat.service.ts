@@ -34,7 +34,6 @@ export class ChatService {
       }
       setTimeout(() => {
         this.elements = document.getElementById('app-message');
-        console.log(this.elements);
       }, 20);
     });
   }

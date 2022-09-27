@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AhorcadoService } from 'src/app/services/ahorcado.service';
-import { words } from './words';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ahorcado-page',
@@ -17,7 +17,7 @@ export class AhorcadoPageComponent implements OnInit {
   triesImg = "assets/hangman/hangman0.png";
   letterButton:boolean = false;
   data:any;
-
+  points:number = 0;
 
   constructor( private service: AhorcadoService) { }
 
@@ -88,13 +88,13 @@ export class AhorcadoPageComponent implements OnInit {
     if (wordCheck === this.word) {
       this.letterButton = true;
       this.win = true;
-      this.triesImg = "assets/hangman/hangmanWon.png"
+      this.triesImg = "assets/hangman/hangmanWon.png";
     }
 
     if (this.tries >= 7) {
       this.letterButton = true;
       this.lost = true;
-      this.triesImg = "assets/hangman/hangmanLose.png"
+      this.triesImg = "assets/hangman/hangmanLose.png";
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MayorMenorService } from 'src/app/services/mayor-menor.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +18,9 @@ export class MayorMenorPageComponent implements OnInit {
   points: number = 0;
 
   constructor(private toastr: ToastrService,
-              private service: MayorMenorService) {}
+              private service: MayorMenorService,
+              public auth: AuthService) {}
+
 
   ngOnInit(): void {
     this.getRandomCard();
@@ -76,6 +79,7 @@ export class MayorMenorPageComponent implements OnInit {
   }
 
   lose() {
+    this.auth.SetScore("mayor-menor",this.points);
     this.result = false;
     this.showResult();
     this.points = 0;

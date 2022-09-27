@@ -1,6 +1,5 @@
 import {
   Auth,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -11,16 +10,22 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import {
   AngularFirestore,
+  AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 
 import { User } from '../services/user';
 
-import { getDatabase, ref, set } from "firebase/database";
-
 import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data.interface';
 import { RegisterData } from '../interfaces/register-data.interface';
+import firebase from 'firebase/compat/app';
+
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { map } from 'rxjs';
+
+
+
 
 
 @Injectable({
@@ -30,6 +35,7 @@ export class AuthService {
 
   userData: any; // Save logged in user data
   now = new Date();
+
 
   constructor(private auth: Auth,
               public afAuth: AngularFireAuth,
@@ -113,5 +119,62 @@ export class AuthService {
 
   getAuth() {
     return this.afAuth.authState;
+  }
+
+  SetScore(game: any, score: any) {
+
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `scores/${this.now + '-' + this.userData.displayName}`
+    );
+
+    const userScore: any = {
+      game: game,
+      score: score,
+      date: this.now.toLocaleString(),
+      user: this.userData.displayName
+    };
+
+    userRef.set(userScore, {
+      merge: false,
+    });
+  }
+
+  getUserHighScore(game: any) {
+    var data;
+    return firebase.firestore().collection('scores')
+                               .where('game', '==', game)
+                               .where('user', '==', this.auth.currentUser.displayName)
+                               .orderBy('score', 'desc').limit(1)
+                               .get()
+                               .then((querySnapshot) => {
+                                 querySnapshot.forEach((doc) => {
+                                     data = doc.data()['score'];
+                                 });
+                                 console.log(data);
+                                 return data;
+                               })
+                               .catch((error) => {
+                                 console.log("Error getting documents: ", error);
+                               });
+  }
+
+
+
+  getGameHighScore(game: any) {
+    var data;
+    return firebase.firestore().collection('scores')
+                               .where('game', '==', game)
+                               .orderBy('score', 'desc').limit(1)
+                               .get()
+                               .then((querySnapshot) => {
+                                 querySnapshot.forEach((doc) => {
+                                     data = doc.data();
+                                 });
+                                 console.log(data);
+                                 return data;
+                               })
+                               .catch((error) => {
+                                 console.log("Error getting documents: ", error);
+                               });
   }
 }

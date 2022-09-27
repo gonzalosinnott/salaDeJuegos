@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PreguntadosService } from 'src/app/services/preguntados.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-preguntados-page',
@@ -19,7 +20,8 @@ export class PreguntadosPageComponent implements OnInit {
 
   
   constructor(private toastr: ToastrService,
-              private service: PreguntadosService) { }
+              private service: PreguntadosService,
+              public auth: AuthService) { }
 
   ngOnInit(): void {
     this.getQuestionCharacter();
@@ -60,6 +62,7 @@ export class PreguntadosPageComponent implements OnInit {
                           });
       this.points ++;
     } else {
+      this.auth.SetScore("preguntados",this.points);
       this.toastr.warning('Puntaje: ' + this.points, 
                           'Incorrecto!' + ' ' + 'La respuesta correcta es:' + ' ' + this.characterName, {
                           timeOut: 3000,

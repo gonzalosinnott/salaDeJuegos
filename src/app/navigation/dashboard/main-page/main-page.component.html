@@ -31,9 +31,28 @@
             </div>
           </div>
           <hr>
-          <h1>PUNTUACIONES</h1>
+          <h1>TUS PUNTUACIONES MAXIMAS</h1>
           <hr>
-          <P>WIP</P>
+          <div>
+            <p *ngIf="preguntadosScore; else elseBlock">PREGUNTADOS: {{preguntadosScore}} PUNTOS</p>
+            <ng-template #elseBlock>PREGUNTADOS: 0 PUNTOS</ng-template>
+          </div>
+          <div>
+            <p *ngIf="snakeScore; else elseBlock2">LA VIBORA: {{snakeScore}} PUNTOS</p>
+            <ng-template #elseBlock2>LA VIBORA: 0 PUNTOS</ng-template>
+          </div>
+          <div>
+            <p *ngIf="mayorMenorScore; else elseBlock3">MAYOR O MENOR: {{mayorMenorScore}} PUNTOS</p>
+            <ng-template #elseBlock3>MAYOR O MENOR: 0 PUNTOS</ng-template>
+          </div>
+          <hr>
+          <h1>SALON DE LA FAMA</h1>
+          <hr>
+          <p>PREGUNTADOS: {{preguntadosHighScore}} PUNTOS - JUGADOR: {{ preguntadosHighScoreUser}} </p>
+          
+          <p>LA VIBORA: {{snakeHighScore}} PUNTOS - JUGADOR: {{ snakeHighScoreUser}} </p>
+          
+          <p>MAYOR O MENOR: {{mayorMenorHighScore}} PUNTOS - JUGADOR: {{ mayorMenorHighScoreUser}} </p>
         </div>
       </div>
     </div>

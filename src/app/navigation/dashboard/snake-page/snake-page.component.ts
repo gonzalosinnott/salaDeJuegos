@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Snake } from './snake';
 import { Direction } from './direction';
 import { Egg } from './egg';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-snake-page',
@@ -9,6 +10,8 @@ import { Egg } from './egg';
   styleUrls: ['./snake-page.component.css']
 })
 export class SnakePageComponent implements OnInit {
+
+  constructor(public auth: AuthService) { }
 
   readonly size = 20;
   readonly gridSize = this.size * this.size;
@@ -34,6 +37,10 @@ export class SnakePageComponent implements OnInit {
       setTimeout(() => {
         this.goStep();
         this.dead = this.snake.checkDead();
+        if (this.dead) {
+          console.log(this.snake.tail.length + 1 - 3);
+          this.auth.SetScore("snake",this.snake.tail.length + 1 - 3);
+        }
         this.time++;
         if (!this.dead) {
           runTime();

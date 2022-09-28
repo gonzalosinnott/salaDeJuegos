@@ -9,6 +9,6 @@ export class PreguntadosService {
   constructor(private http: HttpClient) { }
 
   getRandomCharacter() { 
-    return this.http.get("https://thesimpsonsquoteapi.glitch.me/quotes?count=4");
+    return this.http.get("https://simpsons-quotes-api.herokuapp.com/quotes?count=4");
   }  
 }

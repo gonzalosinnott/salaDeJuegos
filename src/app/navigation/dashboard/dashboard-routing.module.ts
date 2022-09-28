@@ -7,6 +7,7 @@ import { MayorMenorPageComponent } from './mayor-menor-page/mayor-menor-page.com
 import { PreguntadosPageComponent } from './preguntados-page/preguntados-page.component';
 import { SnakePageComponent } from './snake-page/snake-page.component';
 import { CvPageComponent } from '../cv-page/cv-page.component';
+import { EncuestaPageComponent } from './encuesta-page/encuesta-page.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'mayormenor' , pathMatch: 'full',component: MayorMenorPageComponent },
     { path: 'preguntados' , pathMatch: 'full',component: PreguntadosPageComponent },
     { path: 'snake' , pathMatch: 'full',component: SnakePageComponent },
+    { path: 'encuesta' , pathMatch: 'full',component: EncuestaPageComponent },
   ] },
   { path: 'cv',component: CvPageComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent }

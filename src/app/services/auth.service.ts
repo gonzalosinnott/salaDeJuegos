@@ -177,4 +177,26 @@ export class AuthService {
                                  console.log("Error getting documents: ", error);
                                });
   }
+
+  SetUserSurvey(data: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users-survey/${this.auth.currentUser.email}`
+    );
+
+    const survey: any = {
+      name: data.name,
+      lastName: data.lastName,
+      phone: data.phone,
+      age: data.age,
+      favGame:  data.favGame,
+      experience: data.experience,
+      opinion: data.opinion,
+      user: this.auth.currentUser.displayName
+    };
+ 
+    return userRef.set(survey, {
+      merge: true,
+    });
+  }
+
 }

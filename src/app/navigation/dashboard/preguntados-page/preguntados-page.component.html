@@ -13,19 +13,35 @@
     <div class="row align-items-md-stretch">
   
       <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+        <div class="p-5 bg-light border rounded-3 text-center" style="height: 400px">
             <p>¿QUE PERSONAJE ES?</p> 
-            <br>          
-            <img src={{characterImg}} alt="character" width="max" height="200">
+            <br> 
+            <div class="d-flex justify-content-center">
+              <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"
+                *ngIf="spinnerService.visibility | async; else elseBlock">
+                <span class="sr-only"></span>
+              </div>
+            </div>         
+            <ng-template #elseBlock>
+              <img src={{characterImg}} alt="character" width="max" height="200">
+            </ng-template>
         </div>
       </div>
   
       <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[0])">{{array[0]}}</button>
-            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[1])">{{array[1]}}</button>
-            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[2])">{{array[2]}}</button>
-            <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[3])">{{array[3]}}</button>
+        <div class="p-5 bg-light border rounded-3">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"
+              *ngIf="spinnerService.visibility | async; else elseBlock2">
+              <span class="sr-only"></span>
+            </div>
+          </div>
+            <ng-template #elseBlock2>
+              <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[0])">{{array[0]}}</button>
+              <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[1])">{{array[1]}}</button>
+              <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[2])">{{array[2]}}</button>
+              <button class="btn btn-primary" style="width:100%; margin:1px" (click)="checkAnswer(array[3])">{{array[3]}}</button>
+            </ng-template>
             <br>
             <br>
             <p>PUNTAJE: {{points}}</p>    

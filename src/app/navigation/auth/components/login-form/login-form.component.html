@@ -23,6 +23,16 @@
       </button>
       <br>      
   </form>
-  <button mat-raised-button  style="width:100%" (click)="fillForm()">
-    Ingreso Rapido
-  </button>
+  <div class="d-flex justify-content-center">
+    <button mat-raised-button 
+            style="width:100%" 
+            (click)="fillForm()">
+      Ingreso Rapido USUARIO
+    </button>
+    <button mat-raised-button 
+            style="width:100%; background-color: #86df6b;" 
+            (click)="fillFormAdmin()">
+      Ingreso Rapido ADMINSTRADOR
+    </button>
+  </div>
+  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PreguntadosService } from 'src/app/services/preguntados.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-preguntados-page',
@@ -21,7 +22,8 @@ export class PreguntadosPageComponent implements OnInit {
   
   constructor(private toastr: ToastrService,
               private service: PreguntadosService,
-              public auth: AuthService) { }
+              public auth: AuthService,
+              public spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
     this.getQuestionCharacter();

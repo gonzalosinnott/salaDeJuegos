@@ -20,13 +20,7 @@ import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data.interface';
 import { RegisterData } from '../interfaces/register-data.interface';
 import firebase from 'firebase/compat/app';
-
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { map } from 'rxjs';
-
-
-
-
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +29,8 @@ export class AuthService {
 
   userData: any; // Save logged in user data
   now = new Date();
-
+  isLogin = false;    
+  roleAs: string;
 
   constructor(private auth: Auth,
               public afAuth: AngularFireAuth,
@@ -45,7 +40,7 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
+        JSON.parse(localStorage.getItem('user')!);        
       } else {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
@@ -55,8 +50,13 @@ export class AuthService {
 
   login({ email, password }: LoginData) {
     return signInWithEmailAndPassword(this.auth, email, password)
-    .then((result) => {
+    .then((result) => {      
       this.SetUserData(result.user);
+      this.isLogin = true;
+      this.roleAs = this.userData.role;
+      localStorage.setItem('STATE', 'true');
+      localStorage.setItem('ROLE', this.roleAs)
+      return of({ success: this.isLogin, role: this.roleAs });
     })
   }
 
@@ -64,6 +64,11 @@ export class AuthService {
     return signInWithPopup(this.auth, new GoogleAuthProvider())
     .then((result) => {
       this.SetUserData(result.user);
+      this.isLogin = true;
+      this.roleAs = this.userData.role;
+      localStorage.setItem('STATE', 'true');
+      localStorage.setItem('ROLE', this.roleAs)
+      return of({ success: this.isLogin, role: this.roleAs });
     })
   }
 
@@ -82,6 +87,11 @@ export class AuthService {
     return signOut(this.auth)
     .then((result) => {
       localStorage.removeItem('user');
+      this.isLogin = false;
+      this.roleAs = '';
+      localStorage.setItem('STATE', 'false');
+      localStorage.setItem('ROLE', '');
+      return of({ success: this.isLogin, role: '' });
     })
   }
 
@@ -100,6 +110,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      role: 'USER'
     };
 
     const userDataLog: any = {
@@ -158,8 +169,6 @@ export class AuthService {
                                });
   }
 
-
-
   getGameHighScore(game: any) {
     var data;
     return firebase.firestore().collection('scores')
@@ -197,6 +206,10 @@ export class AuthService {
     return userRef.set(survey, {
       merge: true,
     });
+  }
+
+  getUserRole() {
+    return this.afs.collection('users-registry').doc(this.auth.currentUser.uid).valueChanges();
   }
 
 }

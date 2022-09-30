@@ -1,7 +1,7 @@
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,7 @@ import { CvPageComponent } from './navigation/cv-page/cv-page.component';
 import { NotFoundComponent } from './navigation/not-found/not-found.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { NgModule } from '@angular/core';
-
+import { CustomHttpInterceptor } from './services/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,11 @@ import { NgModule } from '@angular/core';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomHttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

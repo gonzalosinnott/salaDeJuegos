@@ -41,4 +41,11 @@ export class LoginFormComponent implements OnInit {
       password: ['123456'],
     });
   }
+
+  fillFormAdmin() : void {
+    this.form = this.fb.group({
+      email: ['admin@admin.com'],
+      password: ['admin123'],
+    });
+  }
 }

@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
   user:any;
   score: any;
   snakeScore:any;
@@ -21,6 +20,9 @@ export class MainPageComponent implements OnInit {
   snakeHighScoreUser:any;
   preguntadosHighScoreUser:any;
   mayorMenorHighScoreUser:any;
+  
+  constructor(public authService: AuthService,) { }
+ 
 
   ngOnInit(): void {
     this.authService.getAuth().subscribe(user => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MayorMenorService } from 'src/app/services/mayor-menor.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-mayor-menor-page',
@@ -19,7 +20,8 @@ export class MayorMenorPageComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
               private service: MayorMenorService,
-              public auth: AuthService) {}
+              public auth: AuthService,
+              public spinnerService: SpinnerService) {}
 
 
   ngOnInit(): void {

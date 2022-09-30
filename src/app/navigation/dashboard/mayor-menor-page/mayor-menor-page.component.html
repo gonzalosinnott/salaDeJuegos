@@ -14,20 +14,30 @@
   <div class="row align-items-md-stretch">
 
     <div class="col-md-6">
-      <div class="h-100 p-5 bg-light border rounded-3 text-center">
+      <div class="p-5 bg-light border rounded-3 text-center" style="height: 400px">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"
+            *ngIf="spinnerService.visibility | async; else elseBlock">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+
         <div class="row align-items-md-stretch">
-          <div class="col-md-6">
-            <p>Carta anterior</p>
-            <img src="{{(oldCardImage) ? oldCardImage : '/assets/higher-lower/cardback.png'}}" alt="cardImg" width="max" height="200">
-            <br>
-            <br>
-          </div>
-          <div class="col-md-6">
-            <p>Carta Actual</p>           
-            <img src={{cardImage}} alt="cardImg" width="max" height="200">
-            <br>
-            <br>
-          </div>
+          <ng-template #elseBlock>
+            <div class="col-md-6">
+              <p>Carta anterior</p>
+              <img src="{{(oldCardImage) ? oldCardImage : '/assets/higher-lower/cardback.png'}}" alt="cardImg"
+                width="max" height="200">
+              <br>
+              <br>
+            </div>
+            <div class="col-md-6">
+              <p>Carta Actual</p>
+              <img src={{cardImage}} alt="cardImg" width="max" height="200">
+              <br>
+              <br>
+            </div>
+          </ng-template>
         </div>
         <div *ngIf="result == true" class="alert alert-success" role="alert">
           ¡GANASTE!
@@ -44,7 +54,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="h-100 p-5 bg-light border rounded-3">
+      <div class="p-5 bg-light border rounded-3">
         <button class="btn btn-primary" style="width:100%" (click)="chosenOption('mayor')">MAYOR</button>
         <br>
         <br>

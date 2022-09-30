@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
+const redirectLoggedInToAdmin = () => redirectLoggedInTo(['admin-dashboard']);
+
 
 const routes: Routes = [
   {
@@ -20,6 +22,20 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
       ...canActivate(redirectUnauthorizedToLogin),
+      data: {
+        role: 'USER'
+      }
+  },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () =>
+      import('./navigation/admin-dashboard/admin-dashboard.module').then(
+        (m) => m.AdminDashboardModule
+      ),
+      ...canActivate(redirectUnauthorizedToLogin),
+      data: {
+        role: 'ADMIN'
+      }
   },
   {
     path: '**',
